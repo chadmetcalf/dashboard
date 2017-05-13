@@ -1,0 +1,8 @@
+{
+  "name": "rails_5_1",
+  "private": true,
+  "dependencies": {
+    "britecharts": "^1.5.2",
+    "d3-selection": "^1.0.6"
+  }
+}
