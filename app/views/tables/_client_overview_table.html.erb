@@ -1,0 +1,22 @@
+
+<h2>Client Overview Table</h2>
+
+<table class="hover">
+  <thead>
+    <tr>
+      <th><%= t '.headers.one' %></th>
+      <th><%= t '.headers.two' %></th>
+      <th><%= t '.headers.three' %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%- client_overview_table.rows.each do |row| %>
+      <tr>
+        <%- name, important, joined_on = row.elements %>
+        <td><%= name %></td>
+        <td><%= important %></td>
+        <td><%= time_ago_in_words joined_on %> ago</td>
+      </tr>
+    <%- end %>
+  </tbody>
+</table>

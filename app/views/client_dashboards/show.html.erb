@@ -1,4 +1,14 @@
-<p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_client_dashboard_path(@client_dashboard) %> |
-<%= link_to 'Back', client_dashboards_path %>
+<div class="row">
+  <h1>Client Dashboard</h1>
+</div>
+
+<div class="row small-up-2 large-up-4">
+	<%= render @client_dashboard.overview_cards %>
+</div>
+
+<div class="row">
+	<%= render @client_dashboard.overview_table %>
+</div>
+
+

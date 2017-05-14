@@ -30,4 +30,23 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  cards:
+    active_support_issue_card:
+      title: 'Active Support Issues'
+      metric_title: 'per time'
+    important_information_card:
+      title: 'Important Information'
+      metric_title: 'per time'
+    vital_thing_card:
+      title: 'Vital Thing'
+      metric_title: 'per time'
+  charts:
+    informative_chart:
+      title: 'Informative Chart'
+  tables:
+    client_overview_table:
+      headers:
+        one: Name
+        two: Important Number
+        three: Joined
+
