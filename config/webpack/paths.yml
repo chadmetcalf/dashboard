@@ -10,6 +10,7 @@ default: &default
   extensions:
     - .coffee
     - .js
+    - .js.erb
     - .jsx
     - .ts
     - .vue

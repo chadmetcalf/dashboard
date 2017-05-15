@@ -1,8 +1,9 @@
 import donut from 'britecharts/src/charts/donut';
 import legend from 'britecharts/src/charts/legend';
 import * as d3Selection from 'd3-selection';
+import * as d3Format from 'd3-format';
 
-class charts {
+var charts = {
   getLegendChart(dataset, optionalColorSchema) {
     var legendChart = legend(),
     legendContainer = d3Selection.select('.js-legend-chart-container'),
@@ -15,15 +16,22 @@ class charts {
         .width(containerWidth*0.8)
         .height(100)
 
-        if (optionalColorSchema) {
-          legendChart.colorSchema(optionalColorSchema);
-        }
+      if (optionalColorSchema) {
+        legendChart.colorSchema(optionalColorSchema);
+      }
+
+      // FIXME: Change the legend number format
+      legendChart.numberFormat = function() {
+        var p = d3Format.precisionFixed(1);
+        this.numberFormat = d3Format.format("." + p + "f");
+      }
+      legendChart.numberFormat();
 
       legendContainer.datum(dataset).call(legendChart);
 
       return legendChart;
     }
-  }
+  },
 
   createDonutChart(dataset, optionalColorSchema) {
     var legendChart = this.getLegendChart(dataset, optionalColorSchema),

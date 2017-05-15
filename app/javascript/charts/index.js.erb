@@ -1,0 +1,32 @@
+import charts from './charts';
+import colors from 'britecharts/src/charts/helpers/colors';
+import _ from 'underscore';
+import * as d3Selection from 'd3-selection';
+import * as d3 from 'd3';
+import PubSub from 'pubsub-js';
+
+let dataset = [];
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Show charts if container available
+  if (d3Selection.select('.js-donut-chart-container').node()) {
+
+    <% routes = Rails.application.routes.url_helpers %>
+      d3.json("<%= routes.v1_chart_path(1, format: :json) %>", function(error, json) {
+      if (error) return console.warn(error);
+      dataset = json.data;
+
+      let colorSchema = colors.colorSchemas['extendedBlueColorSchema']
+      charts.createDonutChart(dataset, colorSchema);
+
+      let redrawCharts = function(){
+        d3Selection.selectAll('.donut-chart').remove();
+
+        charts.createDonutChart(dataset, colorSchema);
+      };
+
+      // Redraw charts on window resize
+      PubSub.subscribe('resize', redrawCharts);
+    });
+  }
+});
